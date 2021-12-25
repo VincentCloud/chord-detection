@@ -21,7 +21,7 @@ def main(train_flag, evaluate_val, save_imgs, ckpt, num_epochs, batch_size):
 
         if evaluate_val:
             transformed_dataset = val_dataset
-        if not evaluate_val:
+        else:
             transformed_dataset = torch.utils.data.ConcatDataset((train_dataset, val_dataset))
 
         # load the pretrained network
@@ -33,7 +33,7 @@ def main(train_flag, evaluate_val, save_imgs, ckpt, num_epochs, batch_size):
         val_loader = torch.utils.data.DataLoader(transformed_dataset, batch_size=batch_size, shuffle=False,
                                                  num_workers=num_workers, pin_memory=True)
 
-        test(val_loader, model, device, save_imgs=save_imgs)
+        test(val_loader, model, device, save_imgs=save_imgs, show=True)
 
 
 if __name__ == "__main__":
