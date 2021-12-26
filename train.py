@@ -158,12 +158,12 @@ def train(ckpt, num_epochs, batch_size, device):
             for tag, value in info.items():
                 logger.scalar_summary(tag, value, epoch)
 
-            # 2. Log values and gradients of the parameters (histogram summary)
-            for tag, value in model.named_parameters():
-                tag = tag.replace('.', '/')
-                try: logger.histo_summary(tag, value.data.cpu().numpy(), epoch)
-                except ValueError: print('hey')
-                logger.histo_summary(tag + '/grad', value.grad.data.cpu().numpy(), epoch)
+            # # 2. Log values and gradients of the parameters (histogram summary)
+            # for tag, value in model.named_parameters():
+            #     tag = tag.replace('.', '/')
+            #     try: logger.histo_summary(tag, value.data.cpu().numpy(), epoch)
+            #     except ValueError: print('hey')
+            #     logger.histo_summary(tag + '/grad', value.grad.data.cpu().numpy(), epoch)
 
             # 3. Log training images (image summary)
             info = {'images': input.view(-1, 300, 300).cpu().numpy()}
