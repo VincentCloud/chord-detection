@@ -87,6 +87,9 @@ def train(ckpt, num_epochs, batch_size, device):
             loss3 = sum(criterion_grid(o, strings) for o in output3)
 
             loss = loss1/2 + loss2 + loss3
+            print(f'loss1: {loss1}')
+            print(f'loss2: {loss2}')
+            print(f'loss3: {loss3}')
 
             # measure accuracy and record loss
             accuracy(output=output1[-1].data, target=target,
