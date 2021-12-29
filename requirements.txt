@@ -1,8 +1,8 @@
 torchvision
-pytorch
+torch
 pillow
 matplotlib
-opencv
+opencv-python
 pandas
 tensorflow
 scikit-image

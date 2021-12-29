@@ -41,14 +41,19 @@ class Rescale(object):
         fingers = []
         frets = []
         strings = []
-        for finger in sample['finger_coord']:
-            fingers.append([rx*finger[0], ry*finger[1]])
-        for fret in sample['fret_coord']:
-            frets.append([rx*fret[0], ry*fret[1]])
-        for string in sample['string_coord']:
-            strings.append([rx*string[0], ry*string[1]])
-        sample['finger_coord'] = np.array(fingers)
-        sample['fret_coord'] = np.array(frets)
-        sample['string_coord'] = np.array(strings)
+        if sample['finger_coord'] is not None:
+            for finger in sample['finger_coord']:
+                fingers.append([rx*finger[0], ry*finger[1]])
+            sample['finger_coord'] = np.array(fingers)
+
+        if sample['fret_coord'] is not None:
+            for fret in sample['fret_coord']:
+                frets.append([rx*fret[0], ry*fret[1]])
+            sample['fret_coord'] = np.array(frets)
+
+        if sample['string_coord'] is not None:
+            for string in sample['string_coord']:
+                strings.append([rx*string[0], ry*string[1]])
+            sample['string_coord'] = np.array(strings)
 
         return sample
